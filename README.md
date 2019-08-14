@@ -1,6 +1,10 @@
 # Identicon
 
-**TODO: Add description**
+run in terminal with `iex -S mix`
+
+In the Elixir shell run Identicon.main("Insert word to be converted to identicon")
+
+It will return an identicon in .png format. 
 
 ## Installation
 
