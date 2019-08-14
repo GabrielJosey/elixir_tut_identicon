@@ -46,9 +46,10 @@ defmodule Identicon do
   end
 
   def filter_odd_squares(%Identicon.Image{grid: grid} = image) do
-    Enum.filter(grid, fn {code, _index} ->
-      rem(code, 2) == 0
-    end)
+    grid =
+      Enum.filter(grid, fn {code, _index} ->
+        rem(code, 2) == 0
+      end)
 
     %Identicon.Image{image | grid: grid}
   end
