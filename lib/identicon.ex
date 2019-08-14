@@ -85,14 +85,18 @@ defmodule Identicon do
     row ++ [second, first]
   end
 
+  # psses in only the first three numbers of the hash
   def pick_color(%Identicon.Image{hex: [r, g, b | _tail]} = image) do
     # add color to image struct
     %Identicon.Image{image | color: {r, g, b}}
   end
 
   def hash_input(input) do
+    # starting with the ":" means we are actually calling from Erlang
+    # hash() converts the input into md5 format.
     hex =
       :crypto.hash(:md5, input)
+      # converts the above into a list
       |> :binary.bin_to_list()
 
     # adding the hex to the image struct
